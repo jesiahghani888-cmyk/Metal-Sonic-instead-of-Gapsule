@@ -1,1 +1,4 @@
-
+{
+	//Boss Theme, made by me
+	"metalsonic_boss": {"File": "metalBoss.ogg", "Name": "Vs Metal Sonic", "Type": "Music", "LoopStart": "70119"},
+}
