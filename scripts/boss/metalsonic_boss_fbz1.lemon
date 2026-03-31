@@ -1,0 +1,6 @@
+//# address-hook(0x06ee68)
+function void fn06ee68()
+{
+    MetalSonic.Init(); // Call the Metal Sonic initialization function
+    return; // Prevent the original Gapsule boss from initializing
+}

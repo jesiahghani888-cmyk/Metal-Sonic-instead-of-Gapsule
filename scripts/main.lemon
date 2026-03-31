@@ -1,1 +1,2 @@
-include boss/?
+include boss/metalsonic_boss_fbz1.lemon
+include boss/metalsonic.lemon
