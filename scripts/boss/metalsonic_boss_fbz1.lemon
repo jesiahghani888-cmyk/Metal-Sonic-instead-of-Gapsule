@@ -7,7 +7,7 @@
 */
 
 // Hook into the FBZ1 boss (Gapsule) initialization address
-//# address-hook(0x06ee68)
+//# address-hook(0x06ee68) end(0x06ee6c)
 function void fn06ee68()
 {
     // Ensure we are in Flying Battery Zone Act 1 (Zone 0x04, Act 0x00)
