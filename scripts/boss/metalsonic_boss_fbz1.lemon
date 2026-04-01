@@ -1,6 +1,30 @@
+/*
+    Metal Sonic instead of Gapsule
+    Flying Battery Zone Act 1 Boss Replacement
+    
+    This script hooks into the original Gapsule boss initialization 
+    and replaces it with Metal Sonic.
+*/
+
+// Hook into the FBZ1 boss (Gapsule) initialization address
 //# address-hook(0x06ee68)
 function void fn06ee68()
 {
-    MetalSonic.Init(); // Call the Metal Sonic initialization function
-    return; // Prevent the original Gapsule boss from initializing
+    // Ensure we are in Flying Battery Zone Act 1 (Zone 0x04, Act 0x00)
+    if (global.zone_act == 0x0400)
+    {
+        // Initialize the Metal Sonic boss object
+        // This function is defined in metalsonic.lemon
+        MetalSonic.Init();
+        
+        // Set the boss encounter flag to 1
+        // This ensures the game knows a boss fight is active
+        level.boss_encounter = 1;
+        
+        // Return immediately to skip the original Gapsule initialization code
+        return;
+    }
+
+    // If for some reason this is called outside FBZ1, run the original logic
+    base.fn06ee68();
 }

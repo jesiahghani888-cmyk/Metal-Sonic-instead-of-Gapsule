@@ -1,2 +1,10 @@
-include boss/metalsonic_boss_fbz1.lemon
+/*
+    Metal Sonic instead of Gapsule
+    Main Script File
+*/
+
+// Include the Metal Sonic boss logic first
 include boss/metalsonic.lemon
+
+// Include the FBZ1 boss replacement script
+include boss/metalsonic_boss_fbz1.lemon
