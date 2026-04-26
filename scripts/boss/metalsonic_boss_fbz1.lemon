@@ -7,6 +7,7 @@
 */
 
 // Hook into the FBZ1 boss (Gapsule) initialization address
+// The original Gapsule init function is fn06ee68
 //# address-hook(0x06ee68) end(0x06ee6c)
 function void fn06ee68()
 {
@@ -27,4 +28,22 @@ function void fn06ee68()
 
     // If for some reason this is called outside FBZ1, run the original logic
     base.fn06ee68();
+}
+
+// We also need to make sure the Gapsule doesn't spawn from the object layout
+// FBZ1 boss object ID is usually 0x85 in Sonic 3 & Knuckles
+// In S3AIR, we can hook the object initialization if needed, 
+// but fn06ee68 is the main entry point for the boss logic.
+
+// Optional: If the boss music doesn't trigger correctly, we can force it here
+//# address-hook(0x06ef60) end(0x06ef74)
+function void fn06ef60()
+{
+    if (global.zone_act == 0x0400)
+    {
+        // Skip original miniboss music trigger and use our custom music
+        playMusic(MUSIC_MAINBOSS);
+        return;
+    }
+    base.fn06ef60();
 }
